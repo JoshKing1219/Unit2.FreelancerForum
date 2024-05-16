@@ -14,11 +14,8 @@ const newFreelancers = [
 ];
 
 function averagePrice() {
-    /** 
-     * I set up office hours to help with this part
-     * because I can't seem to figure out how to calculate
-     * the average price from two arrays.
-    */
+    const total = freelancers.reduce((totalPrice, freelancer) => {return totalPrice + freelancer.price}, 0);
+    return total / freelancers.length;
 };
 
 function init () {
@@ -79,6 +76,8 @@ function addFreelancer() {
     if (newFreelancers.length > 0) {
         const newFreelancer = newFreelancers.pop();
         freelancers.push(newFreelancer);
+        const average = document.querySelector('h3')
+        average.innerText = `The average starting price is $${averagePrice()}.`;
         renderFreelancers();
     }
 };
